@@ -2,7 +2,7 @@ This is a test file
 
 {[Hello Test]}
 
-{Hello [Test] }
+{Hello [Test]}
 
 {[Hello
-Test]}
+	(Test)]}
