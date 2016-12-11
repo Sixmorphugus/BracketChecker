@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <conio.h>
 
 // helpers
 char* readFileToEnd(FILE* fl) {
@@ -79,7 +78,7 @@ int main(int argc, char** argv) {
 		if (curChar == '\n') {
 			printf("\n");
 			newLine = 1;
-			newLineNeeded = 0;
+			//newLineNeeded = 0;
 		}
 		else if (curChar == ' ' || curChar == '\t') {
 			if(!newLine)
@@ -141,7 +140,7 @@ int main(int argc, char** argv) {
 				bracketTallyC++;
 
 				// nesting mismatch
-				if (nestings[nestingInt - 1] != '(') {
+				if (nestingInt == 0 || nestings[nestingInt - 1] != '(') {
 					nestingMismatches++;
 					itsAMismatch = 1;
 				}
@@ -151,7 +150,7 @@ int main(int argc, char** argv) {
 				boxTallyC++;
 
 				// nesting mismatch
-				if (nestings[nestingInt - 1] != '[') {
+				if (nestingInt == 0 || nestings[nestingInt - 1] != '[') {
 					nestingMismatches++;
 					itsAMismatch = 1;
 				}
@@ -161,7 +160,7 @@ int main(int argc, char** argv) {
 				braceTallyC++;
 
 				// nesting mismatch
-				if (nestings[nestingInt - 1] != '{') {
+				if (nestingInt == 0 || nestings[nestingInt - 1] != '{') {
 					nestingMismatches++;
 					itsAMismatch = 1;
 				}
@@ -169,7 +168,8 @@ int main(int argc, char** argv) {
 				break;
 			}
 
-			nestingInt--;
+			if(nestingInt > 0)
+				nestingInt--;
 
 			if (!newLine) {
 				printf("\n");
@@ -220,6 +220,4 @@ int main(int argc, char** argv) {
 	}
 
 	free(fileLines);
-	
-	while(!_kbhit()) {}
 }
