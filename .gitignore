@@ -5,3 +5,5 @@ Project1/x64/*
 Debug/*
 Release/*
 x64/*
+/Project1.VC.db
+/Project1.VC.VC.opendb
